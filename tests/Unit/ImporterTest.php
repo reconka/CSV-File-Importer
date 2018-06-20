@@ -2,12 +2,12 @@
 
 namespace Tests\Unit;
 
-use App\CSVImporter\Validators\Rule;
-use App\CSVImporter\CSVImporter;
+use App\CsvImporter\Validators\Rules;
+use App\CsvImporter\CsvImporter;
 use App\Exceptions\CsvValidationException;
 use Tests\TestCase;
 
-class ValidatorTest extends TestCase
+class ImporterTest extends TestCase
 {
     /** @test */
     public function compareCsvFieldsAndCheckRowsCount()
@@ -40,19 +40,22 @@ class ValidatorTest extends TestCase
         $this->assertEquals($stockItem['Discontinued'], '');
     }
 
-    /** @test */
+    /**
+     * @expectedException \App\Exceptions\CsvValidationException
+     * @test
+     */
     public function validationExceptionTest()
     {
         $csv = new CSVImporter(base_path('CSV/stock.csv'));
         $csv->getRowByIndex(6)->validateRow([
-            'Product Code' => Rule::required(),
-            'Product Name' => Rule::required(),
-            'Product Description' => Rule::nullable(),
-            'Stock' => Rule::integer(),
-            'Cost in GBP' => Rule::float(),
-            'Discontinued' => Rule::checkAllowedStrings(['yes', 'no',''])
+            'Product Code' => Rules::required(),
+            'Product Name' => Rules::required(),
+            'Product Description' => Rules::nullable(),
+            'Stock' => Rules::integer(),
+            'Cost in GBP' => Rules::float(),
+            'Discontinued' => Rules::checkAllowedStrings(['yes', 'no',''])
         ]);
 
         $this->expectException(CsvValidationException::class);
-    }	
+    }
 }

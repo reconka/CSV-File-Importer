@@ -5,12 +5,12 @@ namespace App\Console\Commands;
 use File;
 use App\CSVImporter\CSVImporter;
 use App\CSVImporter\CSVRow;
-use App\CSVImporter\Validators\Rule;
+use App\CSVImporter\Validators\Rules;
 use App\Exceptions\CsvValidationException;
 use App\StockItems;
 use Illuminate\Console\Command;
 
-class CSVImportCommand extends Command
+class CsvImportCommand extends Command
 {
     /**
      * The console command brief description.
@@ -31,12 +31,12 @@ class CSVImportCommand extends Command
     {
         parent::__construct();
         $this->rules = [
-            'Product Code' => Rule::required(),
-            'Product Name' => Rule::required(),
-            'Product Description' => Rule::nullable(),
-            'Cost in GBP' => Rule::float(),
-            'Stock' => Rule::integer(),
-            'Discontinued' => Rule::checkAllowedStrings(['yes','no',''])
+            'Product Code' => Rules::required(),
+            'Product Name' => Rules::required(),
+            'Product Description' => Rules::nullable(),
+            'Cost in GBP' => Rules::float(),
+            'Stock' => Rules::integer(),
+            'Discontinued' => Rules::checkAllowedStrings(['yes','no',''])
         ];
     }
 
