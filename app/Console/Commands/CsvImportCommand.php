@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use File;
-use App\CSVImporter\CSVImporter;
-use App\CSVImporter\CSVRow;
+use App\CSVImporter\CsvImporter;
+use App\CSVImporter\CsvRow;
 use App\CSVImporter\Validators\Rules;
 use App\Exceptions\CsvValidationException;
 use App\StockItems;
