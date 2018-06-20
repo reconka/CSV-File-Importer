@@ -1,11 +1,11 @@
 <?php
 
-namespace App\CSVImporter;
+namespace App\CsvImporter;
 
 use App\Exceptions\CsvValidationException;
 use Illuminate\Support\Collection;
 
-class CSVRow
+class CsvRow
 {
     public $data;
 

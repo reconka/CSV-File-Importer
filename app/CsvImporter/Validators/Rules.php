@@ -1,11 +1,11 @@
 <?php
 
-namespace App\CSVImporter\Validators;
+namespace App\CsvImporter\Validators;
 
 use Countable;
 use App\Exceptions\CsvValidationException;
 
-class Rule
+class Rules
 {
     protected $rule;
 
@@ -71,12 +71,12 @@ class Rule
     }
 
     /**
-     * @param {array} $allowed
+     * @param $allowed
      * @return bool
      */
     public static function checkAllowedStrings($allowed)
     {
-        $allowedStrings =  implode(', ', $allowed);
+        $allowedStrings = implode(', ', $allowed);
         return tap((new self('please enter a value from the following options: ' .$allowedStrings)))->setValidationRule(function ($value) use ($allowed) {
             return in_array((string) $value, $allowed);
         });
@@ -97,7 +97,7 @@ class Rule
     }
 
     /**
-     * @param  $validationRule
+     * @param $validationRule
      */
     public function setValidationRule(\Closure $validationRule)
     {

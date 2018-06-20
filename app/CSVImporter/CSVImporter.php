@@ -1,8 +1,8 @@
 <?php
 
-namespace App\CSVImporter;
+namespace App\CsvImporter;
 
-class CSVImporter
+class CsvImporter
 {
     /**
      * @var string
@@ -74,7 +74,7 @@ class CSVImporter
         while ($row = fgetcsv($this->file)) {
             $this->rows[] = new CSVRow($row, $this->columns);
         }
-    }
+	}
 
     public function __destruct()
     {
