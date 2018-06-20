@@ -15,7 +15,7 @@ class CsvImportCommand extends Command
     /**
      * The console command brief description.
      */
-    protected $description = 'Import a Stock csv into the database.';
+    protected $description = 'Import Stock.csv file into the database.';
 
     /**
      * Supported Mimetypes
@@ -48,7 +48,7 @@ class CsvImportCommand extends Command
         $path = $this->argument('csv');
 
         if (! file_exists(base_path($path))) {
-            return $this->error('❕ Couldn\'t find the CSV file. Please copy into CSV folder');
+            return $this->error('❕ Couldn\'t find the CSV file. Please copy into  root CSV folder');
         }
 
         if (! in_array(File::mimeType($path), $this->supportedMimeTypes)) {

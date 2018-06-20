@@ -71,7 +71,7 @@ class Rules
     }
 
     /**
-     * @param {array} $allowed
+     * @param $allowed
      * @return bool
      */
     public static function checkAllowedStrings($allowed)
