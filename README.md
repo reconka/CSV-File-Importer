@@ -1,5 +1,13 @@
+# Task:
+Process the attached CSV into a database table using Object Oriented PHP, you are free to use any framework
+Write you code using PSR2 coding standards
+Provide the SQL to create the database table
+Provide instructions to run your code
+Write unit tests,
+
 # CSV-File-Importer
 simple CSV importer
+
 
  ## Installation Steps
   
